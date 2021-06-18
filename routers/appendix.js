@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
         cb(null, APPENDIX_DIR)
     },
     filename: function (req, file, cb) {
-        const urlArr = req.url.split("/").filter(s => s);
+        const urlArr = decodeURI(req.url).split("/").filter(s => s);
         const uploadPath = path.join(urlArr.join(path.sep), UUID.v4());
         mkdirsSync(path.join(APPENDIX_DIR, uploadPath))
         cb(null, path.join(uploadPath, file.originalname))
@@ -26,7 +26,7 @@ router.post('/(.*)', upload.any(), (ctx, next) => {
 });
 
 router.get('/(.*)', async (ctx, next) => {
-    const urlArr = ctx.request.url.split('/').filter(s => s);
+    const urlArr = decodeURI(ctx.request.url).split('/').filter(s => s);
     const filePath = path.join(APPENDIX_DIR, urlArr.join(path.sep));
     if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
         const file = await fs.readFileSync(filePath);
