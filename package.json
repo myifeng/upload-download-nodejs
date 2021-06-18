@@ -1,5 +1,5 @@
 {
-  "name": "commons-upload-download-nodejs",
+  "name": "upload-download-nodejs",
   "version": "1.0.0",
   "description": "A file upload and download for Node.js",
   "main": "index.js",
