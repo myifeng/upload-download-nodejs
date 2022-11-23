@@ -9,7 +9,7 @@
     "start": "nodemon"
   },
   "dependencies": {
-    "@koa/multer": "^3.0.0",
+    "@koa/multer": "^3.0.2",
     "@koa/router": "^10.1.1",
     "koa": "^2.13.4",
     "multer": "^1.4.4",
